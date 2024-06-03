@@ -1,27 +1,42 @@
+import "cypress-file-upload";
 describe("Assertion demo", () => {
-    it("Fixtures", () => {
-      cy.visit("https://demoqa.com/automation-practice-form");
-      cy.wait(3000);
-      cy.fixture("demoQA").then((data) => {
+  it("Fixtures", () => {
+    cy.visit("https://demoqa.com/automation-practice-form");
+    cy.wait(3000);
+    cy.fixture("demoQA").then((data) => {
+      cy.log(data.firstName);
+      cy.get("#firstName").type(data.firstName);
+      cy.get("#lastName").type(data.lastName);
+      cy.get("#userEmail").type(data.userEmail);
+      if (data.genderRadio === "Male") {
+        cy.get('input[name="gender"][value="Male"]').check({ force: true });
+      } else if (data.genderRadio === "Female") {
+        cy.get('input[name="gender"][value="Female"]').check({ force: true });
+      } else if (data.genderRadio === "Other") {
+        cy.get('input[name="gender"][value="Other"]').check({ force: true });
+      }
 
-        cy.get("#firstName").type(data.firstName);
-        cy.get("#lastName").type(data.lastName);
-        cy.get("#userEmail").type(data.userEmail);
-        if (data.genderRadio === 'Male') {
-            cy.get('input[name="gender"][value="Male"]').check({ force: true });
-          } else if (data.genderRadio === 'Female') {
-            cy.get('input[name="gender"][value="Female"]').check({ force: true });
-          } else if (data.genderRadio === 'Other') {
-            cy.get('input[name="gender"][value="Other"]').check({ force: true });
-          }
-          
-          cy.get("#userNumber").type(data.userNumber);
-          cy.get('#dateOfBirthInput').click();
-          cy.get('.react-datepicker__month-select').select(data.dobMonth);
-          cy.get('.react-datepicker__year-select').select(data.dobYear);
-          cy.get('.react-datepicker__day--0' + (data.dobDay < 10 ? '0' : '') + data.dobDay).click();
-         // const dobFormatted = `${data.dobMonth}/${data.dobDay}/${data.dobYear}`;
-          //cy.get('#dateOfBirthInput').should('have.value', dobFormatted);
+      cy.get("#userNumber").type(data.userNumber);
+      cy.get("#dateOfBirthInput").click();
+      cy.get(".react-datepicker__month-select").select(data.dobMonth);
+      cy.get(".react-datepicker__year-select").select(data.dobYear);
+      cy.get(
+        ".react-datepicker__day--0" +
+          (data.dobDay < 10 ? "0" : "") +
+          data.dobDay
+      ).click();
+      cy.get("#subjectsInput").click().type(data.subjectsInput);
+      cy.get(".subjects-auto-complete__menu-list")
+        .contains(data.subjectsInput)
+        .click();
+      cy.get("#hobbies-checkbox-2").check({ force: true });
+      cy.get("#uploadPicture").attachFile(data.uploadPicture);
+      cy.get("#currentAddress").type(data.currentAddress);
+      cy.get(". css-1uccc91-singleValue")
+        .type(data.state, { force: true })
+        .type("{enter}")
+        .click();
+      cy.get("#city").click().type(data.city, { force: true }).type("{enter}");
     });
-    });
+  });
 });
