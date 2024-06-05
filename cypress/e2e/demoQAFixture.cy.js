@@ -20,11 +20,7 @@ describe("Assertion demo", () => {
       cy.get("#dateOfBirthInput").click();
       cy.get(".react-datepicker__month-select").select(data.dobMonth);
       cy.get(".react-datepicker__year-select").select(data.dobYear);
-      cy.get(
-        ".react-datepicker__day--0" +
-          (data.dobDay < 10 ? "0" : "") +
-          data.dobDay
-      ).click();
+      cy.get( ".react-datepicker__day--0" +(data.dobDay < 10 ? "0" : "") +data.dobDay).click();
       cy.get("#subjectsInput").click().type(data.subjectsInput);
       cy.get(".subjects-auto-complete__menu-list")
         .contains(data.subjectsInput)
@@ -32,11 +28,9 @@ describe("Assertion demo", () => {
       cy.get("#hobbies-checkbox-2").check({ force: true });
       cy.get("#uploadPicture").attachFile(data.uploadPicture);
       cy.get("#currentAddress").type(data.currentAddress);
-      cy.get(". css-1uccc91-singleValue")
-        .type(data.state, { force: true })
-        .type("{enter}")
-        .click();
-      cy.get("#city").click().type(data.city, { force: true }).type("{enter}");
+      cy.get('#state .css-1wa3eu0-placeholder').click().type(`${data.state}{enter}`);
+      cy.get('#city .css-1wa3eu0-placeholder').click().type(`${data.city}{enter}`);
+      cy.get('#submit').click();
     });
   });
 });
