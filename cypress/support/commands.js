@@ -31,11 +31,13 @@
  ///<reference types="cypress-xpath"/> //for xpath
 
 
-                   //For iframe
- //Cypress.Commands.add('getIframeBody', (iframeSelector) => {
+ // Add a custom command for handling iframes
+ Cypress.Commands.add('iframe', { prevSubject: 'element' }, ($iframe) => {
+   return new Cypress.Promise((resolve) => {
+     $iframe.on('load', () => {
+       resolve($iframe.contents().find('body'));
+     });
+   });
+ });
 
-    //return cy.get(iframeSelector)
-   // .its('0.contentDocument.body')
-    //.should('not.be.empty')
-    //.then(cy.wrap);
- //});
+
