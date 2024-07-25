@@ -20,7 +20,7 @@ describe("Assertion demo", () => {
       cy.get("#dateOfBirthInput").click();
       cy.get(".react-datepicker__month-select").select(data.dobMonth);
       cy.get(".react-datepicker__year-select").select(data.dobYear);
-      cy.get( ".react-datepicker__day--0" +(data.dobDay < 10 ? "0" : "") +data.dobDay).click();
+      cy.get(".react-datepicker__day--0" +(data.dobDay < 10 ? "0" : "") +data.dobDay).click();
       cy.get("#subjectsInput").click().type(data.subjectsInput);
       cy.get(".subjects-auto-complete__menu-list")
         .contains(data.subjectsInput)
