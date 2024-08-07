@@ -9,7 +9,8 @@
   "author": "Abigail",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^13.8.0"
+    "cypress": "^13.8.0",
+    "cypress-commands": "^3.0.0"
   },
   "devDependencies": {
     "cypress-file-upload": "^5.0.8",

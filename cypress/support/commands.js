@@ -1,3 +1,6 @@
+const { addCommands } = require('cypress-commands');
+//cypress/support/index.js
+require('cypress-xpath');
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -39,5 +42,7 @@
      });
    });
  });
+ 
+
 
 
