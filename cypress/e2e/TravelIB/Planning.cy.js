@@ -17,13 +17,23 @@ describe("Travel Itinerary Builder", () =>{
 
     //cy.get(".google-button").click({force:true});
 
-    cy.contains("Planning").click();
-    cy.get(".mat-mdc-select-placeholder").click();
-    cy.get(".mat-mdc-select-arrow").click();
+    cy.xpath("//tib-sidebar//p[contains(text(),'Planning')]")
+    //cy.contains("Planning").should('be.visible').click({force:true})
+      .should('exist')// Check if the element is visible
+      .click({force:true}); 
+    
+      //cy.get("#mat-option-8").click();
+      cy.get("#mat-option-9").click({force:true}); 
  
+      cy.get(".1723161600000_11:00").click();
+      cy.get(".cdk-overlay-container").click();
+      cy.get("td[id='1723075200000_11:00'] img").click({force:true});
 
+      cy.get(".mdc-button__label").click();
+      cy.get(".mdc-button__label").should('have.value','Cancel')
 
-
+      cy.get(".mdc-button__label").click();
+      cy.get(".mdc-button__label").should('have.value','Delete');
 
     }});
 });

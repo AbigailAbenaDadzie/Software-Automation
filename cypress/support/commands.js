@@ -42,7 +42,61 @@ require('cypress-xpath');
      });
    });
  });
- 
+   
+
+ Cypress.Commands.add('loginToTIB', (email, password) => {
+  // Visit the home page
+  cy.visit("https://tib.amalitech-dev.net/home");
+
+  // Verify the URL
+  cy.url().should('contain', 'https://tib.amalitech-dev.net');
+
+  // Click the Login button
+  cy.contains("Login").click({ force: true });
+
+  // Enter the email
+  cy.get("input[type='email']").type(email);
+  cy.get("input[type='email']").should('have.value', email);
+
+  // Enter the password
+  cy.get("input[type='password']").type(password);
+  cy.get("input[type='password']").should('have.value', password);
+
+  // Submit the form
+  cy.get(".mdc-button__label").click({ force: true });
+
+  // Optional: Verify the login was successful
+  cy.get(".mdc-button__label").should('contain', 'Log In');
+});
+
+
+
+
+Cypress.Commands.add('loginToTIBasAdmin', (email, password) => {
+  // Visit the home page
+  cy.visit("https://tib.amalitech-dev.net/home");
+
+  // Verify the URL
+  cy.url().should('contain', 'https://tib.amalitech-dev.net');
+
+  // Click the Login button
+  cy.contains("Login").click({ force: true });
+
+  // Enter the email
+  cy.get("input[type='email']").type(email);
+  cy.get("input[type='email']").should('have.value', email);
+
+  // Enter the password
+  cy.get("input[type='password']").type(password);
+  cy.get("input[type='password']").should('have.value', password);
+
+  // Submit the form
+  cy.get(".mdc-button__label").click({ force: true });
+
+  // Optional: Verify the login was successful
+  cy.get(".mdc-button__label").should('contain', 'Log In');
+});
+
 
 
 
