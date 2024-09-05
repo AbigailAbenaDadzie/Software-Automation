@@ -1,5 +1,6 @@
-class SignUp  //first approach of using POM
-{
+ class SignupPage{
+//first approach of using POM
+
 
 setFullName(fullName )
 {
@@ -26,15 +27,18 @@ setConfirmPassword(confirmPassword)
     cy.get("#confirmPassword").type(confirmPassword);
 }
 
-clickSubmit()
+clickLogin()
 {
     cy.get("button[type='submit']").click();
 }
 
-verifySignup( )
-{
-    cy.get("h1[class='text-4xl tracking-tighter max-md:max-w-full']").should('contain','Verify Your Email');
-}
+
+// verifySignup( )
+// {
+//     cy.get(".px-5 py-4 mt-4 text-base text-subTextColor font-medium tracking-wider bg-white hover:bg-paleCyan rounded-lg border-2 border-mainBlue border-solid max-md:px-5 max-md:max-w-full").click();
+//     //  should('be.visible');
+
+// }
 
 
 
