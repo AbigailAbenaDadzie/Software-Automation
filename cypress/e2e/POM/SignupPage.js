@@ -19,6 +19,7 @@ setEmail(email )
 
 setPassword(password )
 {
+    cy.wait(3000)
     cy.get("#password").type(password );
 }
 
@@ -33,12 +34,7 @@ clickLogin()
 }
 
 
-// verifySignup( )
-// {
-//     cy.get(".px-5 py-4 mt-4 text-base text-subTextColor font-medium tracking-wider bg-white hover:bg-paleCyan rounded-lg border-2 border-mainBlue border-solid max-md:px-5 max-md:max-w-full").click();
-//     //  should('be.visible');
 
-// }
 
 
 

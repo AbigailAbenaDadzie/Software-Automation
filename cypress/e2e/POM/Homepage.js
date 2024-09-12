@@ -26,7 +26,7 @@ class Homepage{
 
     clickOnProfile()
     {
-        cy.contains("Abena_Dadzie").click();
+        cy.contains("Abena").click();
     }
 
     

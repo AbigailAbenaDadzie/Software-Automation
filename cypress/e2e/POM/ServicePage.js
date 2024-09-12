@@ -2,13 +2,13 @@ class ServicePage{
 
     selectService()
     {
-        cy.contains("Service page").click();
+        cy.contains("Service page").click({force:true});
         
     }
 
     selectProvider()
     {
-        cy.get(':nth-child(1) > .flex-col > .h-\[248px\] > .w-full').click({force:true});
+        cy.contains("Exceptional").should("be.visible").click({force:true});
     }
 
     clickRequestQuote()
@@ -28,7 +28,7 @@ class ServicePage{
 
     desiredTimeframe()
     {
-        cy.get("#desiredTimeframe").type('2024-09-04')
+        cy.get("#desiredTimeframe").type('2017-06-01T08:30')
     }
 
     instructions()
@@ -41,6 +41,10 @@ class ServicePage{
         cy.get("button[type=submit]").click();
     }
 
+    close()
+    {
+        cy.get(".fixed.top-0.left-0.w-screen.h-screen.bg-black.opacity-40.z-50.ng-star-inserted").click({force:true});
+    }
 
 }
 export default ServicePage;

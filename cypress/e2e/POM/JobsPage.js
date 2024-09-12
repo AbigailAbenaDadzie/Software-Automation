@@ -6,7 +6,7 @@ selectJobs()
 
 clickcreateTask()
 {
-    cy.get(".w-full py-1.5 px-2 rounded-[5px] text-[14px] md:text-[15px] font-medium bg-primBlue text-white p-1.5").click();
+    cy.contains("Create Task").click();
 }
 
 titleJob()
@@ -17,8 +17,9 @@ titleJob()
 
 selection()
 {
- cy.get(".selection").click().select("Home and Apartment Cleaning");
- cy.get(".selection").should('be.visible') 
+ cy.get(".selection").click()
+ .select("Home and Apartment Cleaning").click();
+ cy.get(".selection").should('have.value', 'Home and Apartment Cleaning');
 }
 
 description()
